@@ -1,6 +1,6 @@
 {
-  "name": "discord-mcp",
-  "version": "1.0.0",
+  "name": "@spranab/discord-mcp",
+  "version": "1.0.1",
   "description": "Discord MCP server for managing Discord servers via Claude",
   "main": "dist/index.js",
   "type": "module",
