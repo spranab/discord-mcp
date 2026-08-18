@@ -35,24 +35,24 @@ two minutes in the Developer Portal.
 
 ## What it looks like
 
-**You:** "Someone's spamming #general. Clear the last 20 messages from that
-user, time them out for an hour, and tell the mods."
+**You:** "Someone's spamming #general. Clear the last 20 messages there, time
+that user out for an hour, and log it for the mods."
 
 ```
-→ discord(category: "messages", action: "search",
-          params: { channel: "general", author: "spammer#0001", limit: 20 })
 → discord(category: "messages", action: "bulk_delete",
-          params: { channel: "general", message_ids: [...] })
+          params: { channel_id: "9876...", count: 20 })
 → discord(category: "moderation", action: "timeout",
-          params: { user: "spammer#0001", duration_minutes: 60,
-                    reason: "Spam in #general" })
+          params: { guild_id: "1234...", user_id: "5555...",
+                    duration_minutes: 60, reason: "Spam in #general" })
 → discord(category: "messages", action: "send",
-          params: { channel: "mod-log", content: "Timed out spammer#0001 (1h)..." })
+          params: { channel_id: "4321...",
+                    content: "Timed out spammer (1h), cleared 20 messages in #general" })
 ```
 
-The model found `bulk_delete` and `timeout` by calling `discord()` and
-`discord(category: "moderation")` first — it never had 37 tool schemas sitting
-in its prompt.
+The model found `bulk_delete` and `timeout` by calling `discord()` and then
+`discord(category: "moderation")` — it never had 30+ tool schemas sitting in
+its prompt. Channel and user IDs come from `channels: list` and
+`members: list` in the same way.
 
 ## Features
 
