@@ -1,6 +1,58 @@
 # @spranab/discord-mcp
 
-A Discord MCP (Model Context Protocol) server that lets AI assistants like Claude manage your Discord server. Single hierarchical tool design — one tool, tiered navigation, zero bloat.
+[![npm](https://img.shields.io/npm/v/@spranab/discord-mcp)](https://www.npmjs.com/package/@spranab/discord-mcp)
+[![npm downloads](https://img.shields.io/npm/dm/@spranab/discord-mcp)](https://www.npmjs.com/package/@spranab/discord-mcp)
+
+Moderating a Discord server means clicking: open the server, find the channel,
+scroll for the message, open the member list, apply the timeout, write the
+note somewhere. Every Discord MCP server that exposes one tool per operation
+also costs you thousands of tokens of context before the model reads your
+question.
+
+This one gives an AI assistant the whole server — 30+ actions across messages,
+channels, roles, members, moderation, threads, webhooks, invites, emojis and
+the audit log — behind a **single `discord` tool** with three-level discovery,
+so the model pays for the actions it uses and nothing else.
+
+## Install (60 seconds)
+
+Claude Code — add to your `.mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "discord": {
+      "command": "npx",
+      "args": ["-y", "@spranab/discord-mcp"],
+      "env": { "bot_token": "YOUR_BOT_TOKEN" }
+    }
+  }
+}
+```
+
+Need a bot token? See [Discord Bot Setup](#discord-bot-setup) below — about
+two minutes in the Developer Portal.
+
+## What it looks like
+
+**You:** "Someone's spamming #general. Clear the last 20 messages from that
+user, time them out for an hour, and tell the mods."
+
+```
+→ discord(category: "messages", action: "search",
+          params: { channel: "general", author: "spammer#0001", limit: 20 })
+→ discord(category: "messages", action: "bulk_delete",
+          params: { channel: "general", message_ids: [...] })
+→ discord(category: "moderation", action: "timeout",
+          params: { user: "spammer#0001", duration_minutes: 60,
+                    reason: "Spam in #general" })
+→ discord(category: "messages", action: "send",
+          params: { channel: "mod-log", content: "Timed out spammer#0001 (1h)..." })
+```
+
+The model found `bulk_delete` and `timeout` by calling `discord()` and
+`discord(category: "moderation")` first — it never had 37 tool schemas sitting
+in its prompt.
 
 ## Features
 
@@ -30,11 +82,9 @@ discord(category="messages")                       → list actions & params
 discord(category="messages", action="send", params={...}) → execute
 ```
 
-## Installation
+## Other clients
 
-### With Claude Code
-
-Add to your `.mcp.json`:
+Same JSON shape for Cursor, Windsurf, Claude Desktop and Cline:
 
 ```json
 {
@@ -82,6 +132,21 @@ bot_token=YOUR_BOT_TOKEN discord-mcp
 - [MCP SDK](https://github.com/modelcontextprotocol/typescript-sdk)
 - Zod for validation
 
+## Related projects
+
+Other MCP servers and agent infrastructure by the same author:
+
+- [saga-mcp](https://github.com/spranab/saga-mcp) — SQLite-backed project
+  tracker so the agent doesn't lose the plan between sessions.
+- [yantrikdb-mcp](https://github.com/yantrikos/yantrikdb-mcp) — persistent
+  cognitive memory for Claude Code, Cursor and Windsurf.
+- [truenas-mcp](https://github.com/spranab/truenas-mcp) — 278 TrueNAS SCALE
+  actions behind the same one-tool pattern used here.
+- [brainstorm-mcp](https://github.com/spranab/brainstorm-mcp) — multi-model
+  debate as an MCP tool.
+- [swarmcode](https://github.com/spranab/swarmcode) — real-time channel
+  between Claude Code instances on different machines.
+
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).
