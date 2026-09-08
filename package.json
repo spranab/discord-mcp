@@ -1,6 +1,7 @@
 {
   "name": "@spranab/discord-mcp",
   "version": "1.0.1",
+  "mcpName": "io.github.spranab/discord-mcp",
   "description": "Run a Discord server from an AI assistant — 30+ actions across messages, channels, roles, members, moderation, threads, webhooks, invites and the audit log, behind one hierarchical MCP tool.",
   "main": "dist/index.js",
   "type": "module",
