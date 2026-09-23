@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/@spranab/discord-mcp)](https://www.npmjs.com/package/@spranab/discord-mcp)
 [![npm downloads](https://img.shields.io/npm/dm/@spranab/discord-mcp)](https://www.npmjs.com/package/@spranab/discord-mcp)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
 Moderating a Discord server means clicking: open the server, find the channel,
 scroll for the message, open the member list, apply the timeout, write the
