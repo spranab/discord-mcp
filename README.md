@@ -147,6 +147,8 @@ Other MCP servers and agent infrastructure by the same author:
   debate as an MCP tool.
 - [swarmcode](https://github.com/spranab/swarmcode) — real-time channel
   between Claude Code instances on different machines.
+- [mcpier](https://github.com/spranab/mcpier) — self-hosted MCP control plane
+  that keeps API keys off your clients.
 
 ## License
 
