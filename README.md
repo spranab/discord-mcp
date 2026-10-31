@@ -149,6 +149,10 @@ Other MCP servers and agent infrastructure by the same author:
   between Claude Code instances on different machines.
 - [mcpier](https://github.com/spranab/mcpier) — self-hosted MCP control plane
   that keeps API keys off your clients.
+- [icantmarket-mcp](https://github.com/spranab/icantmarket-mcp) — browse
+  products and post asks/reviews on icantmarket from any MCP client.
+- [tier](https://github.com/yantrikos/tier) — adapts a tool list to the model
+  behind it, so small models still pick the right one.
 
 ## License
 

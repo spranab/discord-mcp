@@ -15,7 +15,7 @@ import {
 import { z } from "zod";
 import dotenv from "dotenv";
 
-dotenv.config();
+dotenv.config({ quiet: true });
 
 // --- Discord Client Setup ---
 
