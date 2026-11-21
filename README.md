@@ -137,22 +137,48 @@ bot_token=YOUR_BOT_TOKEN discord-mcp
 
 Other MCP servers and agent infrastructure by the same author:
 
-- [saga-mcp](https://github.com/spranab/saga-mcp) — SQLite-backed project
-  tracker so the agent doesn't lose the plan between sessions.
+- [yantrikdb](https://github.com/yantrikos/yantrikdb) — the Rust engine
+  behind yantrikdb-mcp: temporal decay, contradiction detection and a
+  knowledge graph as an embeddable library.
 - [yantrikdb-mcp](https://github.com/yantrikos/yantrikdb-mcp) — persistent
   cognitive memory for Claude Code, Cursor and Windsurf.
-- [truenas-mcp](https://github.com/spranab/truenas-mcp) — 278 TrueNAS SCALE
-  actions behind the same one-tool pattern used here.
+- [yantrikdb-server](https://github.com/yantrikos/yantrikdb-server) —
+  yantrikdb as an HTTP gateway and MCP server, with an openraft cluster mode
+  instead of an embedded library.
+- [yantrik-memory](https://github.com/yantrikos/yantrik-memory) — persistent
+  cognitive memory for AI agents on the YantrikDB engine, with evolving
+  personality traits and bond progression.
+- [langchain-yantrikdb](https://github.com/yantrikos/langchain-yantrikdb) —
+  YantrikDB as a LangChain VectorStore and ChatMessageHistory.
+- [yantrikdb-client](https://github.com/yantrikos/yantrikdb-client) — typed
+  Python client SDK for YantrikDB over HTTP: remember, recall with retrieval
+  reasons, contradiction handling.
+- [yantrikdb-hermes-plugin](https://github.com/yantrikos/yantrikdb-hermes-plugin)
+  — YantrikDB memory provider for NousResearch/hermes-agent, with self-tuning
+  ranking and contradiction tracking.
+- [openclaw-memory-yantrikdb](https://github.com/yantrikos/openclaw-memory-yantrikdb)
+  — OpenClaw memory plugin backed by YantrikDB: conflict-aware session
+  briefings and auto-capture over plain HTTP.
+- [saga-mcp](https://github.com/spranab/saga-mcp) — SQLite-backed project
+  tracker so the agent doesn't lose the plan between sessions.
 - [brainstorm-mcp](https://github.com/spranab/brainstorm-mcp) — multi-model
   debate as an MCP tool.
-- [swarmcode](https://github.com/spranab/swarmcode) — real-time channel
-  between Claude Code instances on different machines.
+- [truenas-mcp](https://github.com/spranab/truenas-mcp) — 278 TrueNAS SCALE
+  actions behind the same one-tool pattern used here.
 - [mcpier](https://github.com/spranab/mcpier) — self-hosted MCP control plane
   that keeps API keys off your clients.
 - [icantmarket-mcp](https://github.com/spranab/icantmarket-mcp) — browse
   products and post asks/reviews on icantmarket from any MCP client.
+- [swarmcode](https://github.com/spranab/swarmcode) — real-time channel
+  between Claude Code instances on different machines.
 - [tier](https://github.com/yantrikos/tier) — adapts a tool list to the model
   behind it, so small models still pick the right one.
+- [chronicler](https://github.com/yantrikos/chronicler) — self-hosted AI
+  roleplay client with memory that survives long campaigns, and native MCP
+  tool support.
+- [contextcache](https://github.com/spranab/contextcache) — compiles tool
+  schemas into a KV cache once and reuses it across sessions, instead of
+  re-prefilling them on every request.
 
 ## License
 
